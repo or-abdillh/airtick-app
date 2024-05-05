@@ -83,8 +83,15 @@
                 </div>
 
                 <!-- action -->
-                <button class="w-full bg-primary-900 py-3 rounded-2xl text-gray-50 font-semibold">
-                    Search Flight
+                <button @click="search" class="w-full bg-primary-900 py-3 rounded-2xl text-gray-50 font-semibold">
+                    <template v-if="isSearching">
+                        <i class="fa-solid fa-spinner fa-spin me-2"></i>
+                        Searching ...
+                    </template>
+
+                    <template v-else>
+                        Search Flight
+                    </template>
                 </button>
             </section>
         </section>
@@ -95,10 +102,12 @@
 
 import AppLayout from '@/layouts/AppLayout.vue';
 import { reactive, ref } from 'vue';
+import { useRouter } from 'vue-router';
 
+const router = useRouter()
 const pils: string[] = ["One way", "Round trip", "Multi city"]
 const activePil = ref<string>(pils[0])
-const isSwitched = ref<boolean>(false)
+const isSearching = ref<boolean>(false)
 
 // forms
 const form = reactive<{ location: string, destination: string, departure: string, return: string, passengers: string }>(
@@ -115,9 +124,20 @@ const form = reactive<{ location: string, destination: string, departure: string
 const switchValue = (): void => {
 
     [form.location, form.destination] = [form.destination, form.location]
+}
 
-    // updated state
-    isSwitched.value = !isSwitched.value
+// handler: search 
+const search = (): void => {
+
+    isSearching.value = true
+
+    setTimeout(() => {
+        router.push({
+            name: "ticket"
+        })
+
+        isSearching.value = false
+    }, 1000)
 }
 
 </script>
