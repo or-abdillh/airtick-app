@@ -1,6 +1,34 @@
 <template>
     <AppLayout>
-        <h1 class="text-center text-primary-900">Hello World</h1>
+        <main class="min-h-screen bg-primary-900">
+
+            <!-- brand -->
+            <header class="flex justify-center items-center gap-3 px-8 py-8">
+                <!-- icon -->
+                <div class="w-10 h-10 bg-white rounded-full grid place-items-center">
+                    <i class="fa-solid fa-plane-departure text-primary-900"></i>
+                </div>
+
+                <p class="text-white text-2xl font-semibold">Airtick</p>
+            </header>
+
+            <!-- illustration -->
+            <img src="/assets/airplane-illustration.png" class="w-full my-6" alt="">
+
+            <!-- copywriting -->
+            <section class="text-center px-8 mb-12">
+                <h1 class="text-4xl mb-5 text-white font-semibold">An easy way to start traveling</h1>
+                <p class="text-gray-200">
+                    See where you can travel to right now and find the best deals across thousands of flights
+                </p>
+            </section>
+
+            <section class="px-8">
+                <button class="w-full p-3 rounded-2xl bg-white mb-6">Get Started</button>
+
+                <p class="text-center text-gray-300">Don't have an account? <strong>Sign Up</strong></p>
+            </section>
+        </main>
     </AppLayout>
 </template>
 
